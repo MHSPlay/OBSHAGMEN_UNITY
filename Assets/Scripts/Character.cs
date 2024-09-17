@@ -8,6 +8,7 @@ public class Character : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float mouseSensitivity = 1000f;
+    public float interactionDistance = 2f;
     public Transform cameraHolder;
 
     private float xRotation = 0f;
@@ -26,6 +27,15 @@ public class Character : MonoBehaviour
     void Update()
     {
         Move();
+        if (Input.GetKeyDown(KeyCode.E) && interactable != null)
+        {
+            interactable.onInteract.Invoke();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        Interaction();
     }
 
     void LateUpdate()
@@ -60,5 +70,49 @@ public class Character : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -89f, 89f);
 
         cameraHolder.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+    }
+
+    private InteractableObject interactable;
+
+    void Interaction()
+    {
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * interactionDistance);
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance))
+        {
+            if (hit.collider.gameObject.layer != 3)
+            {
+                return;
+            }
+
+            if (interactable == null)
+            {
+                interactable = hit.collider.GetComponent<InteractableObject>();
+                interactable.onCursorEnter.Invoke();
+            }
+            else
+            {
+                if (interactable.gameObject != hit.collider.gameObject)
+                {
+                    interactable = hit.collider.GetComponent<InteractableObject>();
+                    interactable.onCursorEnter.Invoke();
+                }
+            }
+            
+            
+            if(interactable.gameObject != hit.collider.gameObject)
+            {
+                interactable = hit.collider.GetComponent<InteractableObject>();
+                interactable.onCursorEnter.Invoke();
+            }
+        }
+        else
+        {
+            if(interactable != null)
+            {
+                interactable.onCursorExit.Invoke();
+                interactable = null;
+            }
+        }
     }
 }

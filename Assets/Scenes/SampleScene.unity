@@ -753,6 +753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   mouseSensitivity: 4
+  jumpForce: 2
   cameraHolder: {fileID: 1187060775}
 --- !u!54 &1141564617
 Rigidbody:
