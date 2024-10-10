@@ -353,8 +353,11 @@
 -analyzer:"N:/Unity/2022.3.24f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"N:/Unity/2022.3.24f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/Character.cs"
+"Assets/Scripts/Door.cs"
 "Assets/Scripts/InteractableObject.cs"
 "Assets/Scripts/InteractTest.cs"
+"Assets/Scripts/Inventory.cs"
+"Assets/Scripts/TriggerArea.cs"
 -langversion:9.0
 
 /deterministic

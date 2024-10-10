@@ -4,8 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [ RequireComponent( typeof( Rigidbody ) ) ]
+[RequireComponent(typeof(Inventory))]
 public class Character : MonoBehaviour
 {
+    public static Character Instance;
+
     public float moveSpeed = 5f;
     public float mouseSensitivity = 1000f;
     public float interactionDistance = 2f;
@@ -14,11 +17,22 @@ public class Character : MonoBehaviour
     private float xRotation = 0f;
 
     private Rigidbody rb;
+    public Inventory inventory;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        inventory = GetComponent<Inventory>();
 
         // lock cursor
         Cursor.lockState = CursorLockMode.Locked;
