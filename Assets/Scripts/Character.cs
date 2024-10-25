@@ -4,8 +4,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [ RequireComponent( typeof( Rigidbody ) ) ]
+<<<<<<< HEAD
 public class Character : MonoBehaviour
 {
+=======
+[RequireComponent(typeof(Inventory))]
+public class Character : MonoBehaviour
+{
+    public static Character Instance;
+
+>>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
     public float moveSpeed = 5f;
     public float mouseSensitivity = 1000f;
     public float interactionDistance = 2f;
@@ -14,12 +22,29 @@ public class Character : MonoBehaviour
     private float xRotation = 0f;
 
     private Rigidbody rb;
+<<<<<<< HEAD
+=======
+    public Inventory inventory;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
+>>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
+<<<<<<< HEAD
+=======
+        inventory = GetComponent<Inventory>();
+
+>>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
         // lock cursor
         Cursor.lockState = CursorLockMode.Locked;
     }
