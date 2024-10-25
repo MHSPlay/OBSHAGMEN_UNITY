@@ -1,14 +1,11 @@
 {
   "dependencies": {
-<<<<<<< HEAD
     "com.glairedaggers.retrotvfx": {
       "version": "file:../Assets/PSX/RetroTVFX-2.0.0",
       "depth": 0,
       "source": "local",
       "dependencies": {}
     },
-=======
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
     "com.unity.collab-proxy": {
       "version": "2.5.1",
       "depth": 0,
@@ -76,7 +73,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
     "com.unity.postprocessing": {
       "version": "3.4.0",
       "depth": 0,
@@ -86,8 +82,6 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
     "com.unity.settings-manager": {
       "version": "2.0.1",
       "depth": 2,

@@ -1,19 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [ RequireComponent( typeof( Rigidbody ) ) ]
-<<<<<<< HEAD
-public class Character : MonoBehaviour
-{
-=======
-[RequireComponent(typeof(Inventory))]
+[ RequireComponent( typeof( Inventory ) ) ]
 public class Character : MonoBehaviour
 {
     public static Character Instance;
+    public InGameMenu settingsMenu_Instance;
 
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
     public float moveSpeed = 5f;
     public float mouseSensitivity = 1000f;
     public float interactionDistance = 2f;
@@ -22,40 +15,35 @@ public class Character : MonoBehaviour
     private float xRotation = 0f;
 
     private Rigidbody rb;
-<<<<<<< HEAD
-=======
     public Inventory inventory;
+
+    #region Unity Methods
 
     private void Awake()
     {
-        if(Instance == null)
-        {
+        if (Instance == null)
             Instance = this;
-        }
     }
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-<<<<<<< HEAD
-=======
         inventory = GetComponent<Inventory>();
 
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
         // lock cursor
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        Move();
-        if (Input.GetKeyDown(KeyCode.E) && interactable != null)
-        {
+
+        Move( );
+
+        if ( Input.GetKeyDown( KeyCode.E ) && interactable != null )
             interactable.onInteract.Invoke();
-        }
+        
     }
 
     private void FixedUpdate()
@@ -68,28 +56,33 @@ public class Character : MonoBehaviour
         RotateCamera();
     }
 
-    // note: writen by MHSPlay
+    #endregion
+
     void Move()
     {
+        if ( settingsMenu_Instance.IsPaused( ) )
+            return;
+
         float moveX = Input.GetAxisRaw("Horizontal"); // (A/D)
         float moveZ = Input.GetAxisRaw("Vertical");   // (W/S)
 
-        Vector3 move = transform.right * moveX + transform.forward * moveZ;
-        move.y = 0;
-        move.Normalize(); // fixed speed diagonal move
+        Vector3 move = (transform.right * moveX + transform.forward * moveZ).normalized;
 
         Vector3 velocity = move * moveSpeed;
+
         rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
     }
 
-    // note: writen by MHSPlay
     // todo: fix camera jitter when moving player and mouse
     void RotateCamera()
     {
+        if ( settingsMenu_Instance.IsPaused( ) )
+            return;
+
         float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
 
-        transform.localRotation *= Quaternion.Euler( 0f, mouseX, 0f);
+        transform.localRotation *= Quaternion.Euler(0f, mouseX, 0f);
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -89f, 89f);
@@ -98,7 +91,6 @@ public class Character : MonoBehaviour
     }
 
     private InteractableObject interactable;
-
     void Interaction()
     {
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -123,9 +115,9 @@ public class Character : MonoBehaviour
                     interactable.onCursorEnter.Invoke();
                 }
             }
-            
-            
-            if(interactable.gameObject != hit.collider.gameObject)
+
+
+            if (interactable.gameObject != hit.collider.gameObject)
             {
                 interactable = hit.collider.GetComponent<InteractableObject>();
                 interactable.onCursorEnter.Invoke();
@@ -133,11 +125,13 @@ public class Character : MonoBehaviour
         }
         else
         {
-            if(interactable != null)
+            if (interactable != null)
             {
                 interactable.onCursorExit.Invoke();
                 interactable = null;
             }
         }
     }
+
+    public void SetMouseSensitivity( float sensitivity ) => mouseSensitivity = sensitivity;
 }
