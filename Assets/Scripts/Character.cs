@@ -5,10 +5,9 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public static Character Instance;
-    public InGameMenu settingsMenu_Instance;
+    public InGameMenu settingsMenu;
 
     public float moveSpeed = 5f;
-    public float mouseSensitivity = 1000f;
     public float interactionDistance = 2f;
     public Transform cameraHolder;
 
@@ -60,7 +59,7 @@ public class Character : MonoBehaviour
 
     void Move()
     {
-        if ( settingsMenu_Instance.IsPaused( ) )
+        if ( settingsMenu.IsPaused( ) )
             return;
 
         float moveX = Input.GetAxisRaw("Horizontal"); // (A/D)
@@ -76,11 +75,12 @@ public class Character : MonoBehaviour
     // todo: fix camera jitter when moving player and mouse
     void RotateCamera()
     {
-        if ( settingsMenu_Instance.IsPaused( ) )
+        if ( settingsMenu.IsPaused( ) )
             return;
 
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
+        float sensitivity = Settings.instance.GetMouseSensitivity( );
+        float mouseX = Input.GetAxisRaw("Mouse X") * sensitivity;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * sensitivity;
 
         transform.localRotation *= Quaternion.Euler(0f, mouseX, 0f);
 
@@ -132,6 +132,4 @@ public class Character : MonoBehaviour
             }
         }
     }
-
-    public void SetMouseSensitivity( float sensitivity ) => mouseSensitivity = sensitivity;
 }

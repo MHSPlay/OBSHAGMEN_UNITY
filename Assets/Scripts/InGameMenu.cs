@@ -2,18 +2,20 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InGameMenu : MonoBehaviour {
-    public GameObject menuPanel;
+public class InGameMenu : MonoBehaviour
+{
+    public GameObject esc_menu_panel;
+    public GameObject settings_menu_panel;
     public Slider sensitivitySlider;
     public TMP_Text sensitivityText;
-    public Character _characterController;
-    public float defaultSensitivity = 1f;
 
     private float mouseSensitivity;
     private bool isPaused = false;
+    private enum MenuState { none, esc, settings }
+    private MenuState currentMenuState = MenuState.esc;
 
     void Start( ) {
-        mouseSensitivity = defaultSensitivity;
+        mouseSensitivity = Settings.instance.GetDefaultMouseSensitivity( );
         UpdateSensitivityText( );
 
         if ( sensitivitySlider != null ) {
@@ -21,8 +23,9 @@ public class InGameMenu : MonoBehaviour {
             sensitivitySlider.onValueChanged.AddListener( OnSensitivityChanged );
         }
 
-        // we don't need menu now
-        menuPanel.SetActive( false );
+        // hide the cannabis <3
+        esc_menu_panel.SetActive( false );
+        settings_menu_panel.SetActive( false );
     }
 
     void Update( ) {
@@ -30,31 +33,52 @@ public class InGameMenu : MonoBehaviour {
             ToggleMenu( );
     }
 
-    void ToggleMenu( ) {
+    public void ToggleMenu( ) {
         isPaused = !isPaused;
-        
-        menuPanel.SetActive( isPaused );
 
-        // Faceless Void put the chronosphere on us 
-        Time.timeScale = isPaused ? 0 : 1;
+        if ( isPaused )
+            UpdateMenuState( MenuState.esc );
+        else
+            UpdateMenuState( MenuState.none );
         
+        // faceless void put the phronosphere on us
+        Time.timeScale = isPaused ? 0 : 1;
+
         Cursor.lockState = isPaused ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = isPaused;
     }
 
-    void OnSensitivityChanged( float newSensitivity ) {
-        mouseSensitivity = newSensitivity;
-        UpdateSensitivityText( );
+    private void UpdateMenuState( MenuState newState ) {
+        esc_menu_panel.SetActive( false );
+        settings_menu_panel.SetActive( false );
 
-        if ( _characterController != null )
-            _characterController.SetMouseSensitivity( mouseSensitivity );
+        switch ( newState ) {
+            case MenuState.esc:
+                esc_menu_panel.SetActive( true );
+                break;
+            case MenuState.settings:
+                settings_menu_panel.SetActive( true );
+                break;
+            case MenuState.none:
+                isPaused = false;
+                break;
+        }
+
+        currentMenuState = newState;
+    }
+
+    void OnSensitivityChanged( float newSensitivity ) {
+        Settings.instance.SetMouseSensitivity( newSensitivity );
+        UpdateSensitivityText( );
     }
 
     void UpdateSensitivityText( ) {
-        if ( sensitivityText != null ) 
+        mouseSensitivity = Settings.instance.GetMouseSensitivity( );
+        if ( sensitivityText != null )
             sensitivityText.text = "sensitivity: " + mouseSensitivity.ToString( "F1" );
     }
 
-    public float GetMouseSensitivity( ) => mouseSensitivity;
+    public void OnSettingPressed( ) => UpdateMenuState( MenuState.settings );
+    public void BackToMainMenu( ) => UpdateMenuState( MenuState.esc );
     public bool IsPaused( ) => isPaused;
 }
