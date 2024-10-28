@@ -3,11 +3,7 @@ guid: b6fc60785b6a795478135ce6f7712c5a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-<<<<<<< HEAD
-  serializedVersion: 13
-=======
   serializedVersion: 11
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -24,18 +20,9 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-<<<<<<< HEAD
-    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
-  ignoreMipmapLimit: 0
-=======
-  isReadable: 0
-  streamingMipmaps: 0
-  streamingMipmapsPriority: 0
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -44,15 +31,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-<<<<<<< HEAD
-    filterMode: 0
-    aniso: 1
-    mipBias: 0
-=======
     filterMode: -1
     aniso: -1
     mipBias: -100
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
     wrapU: 0
     wrapV: 0
     wrapW: 0
@@ -73,22 +54,10 @@ TextureImporter:
   textureType: 0
   textureShape: 1
   singleChannelComponent: 0
-<<<<<<< HEAD
-  flipbookRows: 1
-  flipbookColumns: 1
-  maxTextureSizeSet: 0
-  compressionQualitySet: 0
-  textureFormatSet: 0
-  ignorePngGamma: 0
-  applyGammaDecoding: 1
-  swizzle: 50462976
-  cookieLightType: 1
-=======
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   applyGammaDecoding: 1
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -100,10 +69,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
-    ignorePlatformSupport: 0
-=======
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -116,10 +81,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
-    ignorePlatformSupport: 0
-=======
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -132,10 +93,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
-    ignorePlatformSupport: 0
-=======
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 3
@@ -148,10 +105,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
-    ignorePlatformSupport: 0
-=======
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
@@ -167,15 +120,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-<<<<<<< HEAD
-    nameFileIdTable: {}
-  mipmapLimitGroupName: 
-  pSDRemoveMatte: 0
-=======
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
->>>>>>> OBSHAGMEN_UNITY/IgnatHuesos
   userData: 
   assetBundleName: 
   assetBundleVariant: 

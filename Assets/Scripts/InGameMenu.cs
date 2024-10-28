@@ -81,4 +81,5 @@ public class InGameMenu : MonoBehaviour
     public void OnSettingPressed( ) => UpdateMenuState( MenuState.settings );
     public void BackToMainMenu( ) => UpdateMenuState( MenuState.esc );
     public bool IsPaused( ) => isPaused;
+    public void OnExit( ) => Application.Quit( );
 }

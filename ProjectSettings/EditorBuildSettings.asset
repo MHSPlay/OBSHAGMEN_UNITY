@@ -4,5 +4,22 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/menu/menu_buffer.unity
+    guid: 8876b165139294f49bd4db0d85500f1e
+  - enabled: 1
+    path: Assets/Scenes/menu/menu_scene.unity
+    guid: 9bf47c95bf0e77442b1d0dc1c51430ca
+  - enabled: 1
+    path: Assets/Scenes/menu/menu_prologue.unity
+    guid: 5a7acc0a9d711194c985f07f32958b88
+  - enabled: 1
+    path: Assets/Scenes/prologue.unity
+    guid: 9543fdb427b98814eb8704d768d7f4a6
+  - enabled: 1
+    path: Assets/Scenes/floor5_scene.unity
+    guid: b4a10e59c32657d40bb5723115c4d486
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: b7c3292ffab0b7343a025a13ded54773, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b27a0d6018f710e4cadab5ca0c5730b1, type: 2}

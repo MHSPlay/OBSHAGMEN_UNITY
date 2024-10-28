@@ -13,7 +13,7 @@ public class Settings : MonoBehaviour {
     
     private void LoadSettings( ) {
         LoadSensitivity( );
-
+        GetBeenInObshaga( );
 
 
 
@@ -21,7 +21,30 @@ public class Settings : MonoBehaviour {
         // . . .
     }
 
-#region sensitivity
+    #region menu
+    
+    static float titleDisplayDuration = 5f;
+    public float GetTitleDisplayDuration( ) => titleDisplayDuration;
+
+    static int beenInObshaga = 0;
+    public int HasBeenInObshaga( ) => beenInObshaga;
+
+    public void SetBeenInObshaga( int value ) {
+        beenInObshaga = value;
+        PlayerPrefs.SetInt( "beenInObshaga", beenInObshaga );
+        PlayerPrefs.Save( );
+    }
+
+    private void GetBeenInObshaga( ) {
+         if ( PlayerPrefs.HasKey( "beenInObshaga" ) )
+            beenInObshaga = PlayerPrefs.GetInt( "beenInObshaga" );
+         else
+            beenInObshaga = 0;
+    }
+
+    #endregion
+
+    #region sensitivity
     static float defaultSensitivity = 1f;
     float mouseSensitivity = defaultSensitivity;
 
@@ -32,7 +55,7 @@ public class Settings : MonoBehaviour {
     }
 
     private void LoadSensitivity( ) {
-        if ( PlayerPrefs.HasKey( "MouseSensitivity" ) ) 
+         if ( PlayerPrefs.HasKey( "MouseSensitivity" ) ) 
             mouseSensitivity = PlayerPrefs.GetFloat( "MouseSensitivity" );
          else 
             mouseSensitivity = defaultSensitivity;

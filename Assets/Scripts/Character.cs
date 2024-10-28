@@ -16,6 +16,9 @@ public class Character : MonoBehaviour
     private Rigidbody rb;
     public Inventory inventory;
 
+
+    float sensitivity;
+
     #region Unity Methods
 
     private void Awake()
@@ -37,57 +40,50 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-
-        Move( );
-
         if ( Input.GetKeyDown( KeyCode.E ) && interactable != null )
             interactable.onInteract.Invoke();
-        
     }
 
     private void FixedUpdate()
     {
         Interaction();
+
+        // if we call move there we don't need to multiply on delta-time
+        if ( !settingsMenu.IsPaused( ) )
+            Move();
     }
 
     void LateUpdate()
     {
-        RotateCamera();
+        if ( !settingsMenu.IsPaused( ) )
+            RotateCamera( );
     }
 
     #endregion
 
-    void Move()
-    {
-        if ( settingsMenu.IsPaused( ) )
-            return;
+    void Move( ) {
 
         float moveX = Input.GetAxisRaw("Horizontal"); // (A/D)
         float moveZ = Input.GetAxisRaw("Vertical");   // (W/S)
 
-        Vector3 move = (transform.right * moveX + transform.forward * moveZ).normalized;
+        Vector3 moveDir = ( transform.right * moveX + transform.forward * moveZ ).normalized;
 
-        Vector3 velocity = move * moveSpeed;
-
-        rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
+        Vector3 vel = moveDir * moveSpeed;
+        rb.velocity = new Vector3( vel.x, rb.velocity.y, vel.z );
     }
 
-    // todo: fix camera jitter when moving player and mouse
-    void RotateCamera()
-    {
-        if ( settingsMenu.IsPaused( ) )
-            return;
+    // todo: fix camera jitter when player moving and mouse moving too, focused on once object
+    void RotateCamera( ) {
 
-        float sensitivity = Settings.instance.GetMouseSensitivity( );
-        float mouseX = Input.GetAxisRaw("Mouse X") * sensitivity;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * sensitivity;
-
-        transform.localRotation *= Quaternion.Euler(0f, mouseX, 0f);
+        sensitivity = Settings.instance.GetMouseSensitivity( );
+        float mouseX = Input.GetAxisRaw( "Mouse X" ) * sensitivity;
+        float mouseY = Input.GetAxisRaw( "Mouse Y" ) * sensitivity;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -89f, 89f);
+        xRotation = Mathf.Clamp( xRotation, -89f, 89f );
 
-        cameraHolder.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.localRotation *= Quaternion.Euler( 0f, mouseX, 0f );
+        cameraHolder.localRotation = Quaternion.Euler( xRotation, 0f, 0f );
     }
 
     private InteractableObject interactable;

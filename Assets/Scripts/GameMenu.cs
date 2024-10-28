@@ -2,16 +2,19 @@ using UnityEngine;
 
 public class GameMenu : MonoBehaviour {
 
+    // hash
     public GameObject MainMenuPanel;
     public GameObject SettingsPanel;
 
     static bool InSettings = false;
 
     #region Unity Methods
-    private void Start( ) {
-        
 
-        
+    private void Awake( ) {
+
+    }
+
+    private void Start( ) {
 
         // reset by default
         MainMenuPanel.SetActive( true );
@@ -19,7 +22,6 @@ public class GameMenu : MonoBehaviour {
     }
 
     private void Update( ) {
-
         OnSettings( );
     }
     #endregion
@@ -36,12 +38,8 @@ public class GameMenu : MonoBehaviour {
         MainMenuPanel.SetActive( InSettings );
         SettingsPanel.SetActive( !InSettings );
 
-
-
-
-
     }
-    
-    public void PressedOnSettings( ) => InSettings = true;
 
+    public void PressedOnSettings( ) => InSettings = true;
+    public void OnExit( ) => Application.Quit( );
 }
