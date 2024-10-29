@@ -75,7 +75,7 @@ public class Character : MonoBehaviour
     // todo: fix camera jitter when player moving and mouse moving too, focused on once object
     void RotateCamera( ) {
 
-        sensitivity = Settings.instance.GetMouseSensitivity( );
+        sensitivity = ( float )Config.instance.GetSettings( "fMouseSensitivity" );
         float mouseX = Input.GetAxisRaw( "Mouse X" ) * sensitivity;
         float mouseY = Input.GetAxisRaw( "Mouse Y" ) * sensitivity;
 

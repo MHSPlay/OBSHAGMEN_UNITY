@@ -1264,7 +1264,6 @@ GameObject:
   - component: {fileID: 6239575827371582527}
   - component: {fileID: 7834567028358817941}
   - component: {fileID: 8700779618618265614}
-  - component: {fileID: 1661781641726530613}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1436,18 +1435,6 @@ MonoBehaviour:
   settings_menu_panel: {fileID: 995362905237488655}
   sensitivitySlider: {fileID: 6511393133607049739}
   sensitivityText: {fileID: 8423841631688606775}
---- !u!114 &1661781641726530613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7807566864967751434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fc95545911e53444b84fb5b18b1d336, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7923092100302924615
 GameObject:
   m_ObjectHideFlags: 0

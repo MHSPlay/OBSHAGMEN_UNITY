@@ -15,7 +15,7 @@ public class InGameMenu : MonoBehaviour
     private MenuState currentMenuState = MenuState.esc;
 
     void Start( ) {
-        mouseSensitivity = Settings.instance.GetDefaultMouseSensitivity( );
+        mouseSensitivity = ( float )Config.instance.GetSettings( "fMouseSensitivity" );
         UpdateSensitivityText( );
 
         if ( sensitivitySlider != null ) {
@@ -68,12 +68,12 @@ public class InGameMenu : MonoBehaviour
     }
 
     void OnSensitivityChanged( float newSensitivity ) {
-        Settings.instance.SetMouseSensitivity( newSensitivity );
+        Config.instance.SetSettings( "fMouseSensitivity", newSensitivity );
         UpdateSensitivityText( );
     }
 
     void UpdateSensitivityText( ) {
-        mouseSensitivity = Settings.instance.GetMouseSensitivity( );
+        mouseSensitivity = ( float )Config.instance.GetSettings( "fMouseSensitivity" );
         if ( sensitivityText != null )
             sensitivityText.text = "sensitivity: " + mouseSensitivity.ToString( "F1" );
     }

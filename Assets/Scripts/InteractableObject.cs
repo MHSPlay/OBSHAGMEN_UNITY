@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-//By Kakins
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField] public UnityEvent onInteract;
