@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
     private float xRotation = 0f;
 
     private Rigidbody rb;
-    public Inventory inventory;
+    [HideInInspector] public Inventory inventory;
 
 
     float sensitivity;

@@ -9,7 +9,7 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] public UnityEvent onCursorEnter;
     [SerializeField] public UnityEvent onCursorExit;
 
-    private void Start()
+    private void OnValidate()
     {
         gameObject.layer = 3;
     }

@@ -5,4 +5,5 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public List<int> keys = new List<int>();
+    public List<Weapon> weapons = new List<Weapon>();
 }
