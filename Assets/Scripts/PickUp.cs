@@ -6,10 +6,10 @@ public class PickUp : MonoBehaviour
 {
     public int keyId;
     string description;
-
     public void pickUp()
     {
-        Character.Instance.inventory.keys.Add(keyId);
-        Destroy(gameObject);
+        Character.Instance.inventory.keys.Add( keyId );
+        Destroy( gameObject );
     }
+
 }
