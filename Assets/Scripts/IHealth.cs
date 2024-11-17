@@ -4,12 +4,9 @@ using UnityEngine;
 
 public interface IHealth
 {
-    public virtual void Damage(int Health) 
-    {
-        
-    }
+    void Damage(int Health);
 
-    public virtual void Heal(int Health)
+    virtual void Heal(int Health)
     {
 
     }

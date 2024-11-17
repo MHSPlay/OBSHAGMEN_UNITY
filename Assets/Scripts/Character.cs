@@ -9,7 +9,9 @@ public class Character : MonoBehaviour
 
     public float moveSpeed = 5f;
     public float interactionDistance = 2f;
+
     public Transform cameraHolder;
+    public Transform weaponHolder;
 
     private float xRotation = 0f;
 
@@ -42,6 +44,12 @@ public class Character : MonoBehaviour
     {
         if ( Input.GetKeyDown( KeyCode.E ) && interactable != null )
             interactable.onInteract.Invoke();
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            inventory.Equip(0);
+
+        if (Input.GetMouseButtonDown(0) && inventory.CurrentWeapon != null)
+            inventory.CurrentWeapon.Hit();
     }
 
     private void FixedUpdate()
