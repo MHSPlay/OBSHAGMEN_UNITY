@@ -2508,18 +2508,6 @@ Transform:
   - {fileID: 1562867343}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2025030468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3452737556930436653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47b40247d6cc644f91df9a1ae8194ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2025030469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2535,7 +2523,7 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2025030468}
+      - m_Target: {fileID: 6036436198801991106}
         m_TargetAssemblyTypeName: PickUp, Assembly-CSharp
         m_MethodName: pickUp
         m_Mode: 1
@@ -2744,7 +2732,7 @@ GameObject:
   - component: {fileID: 505829061796298668}
   - component: {fileID: 2025030470}
   - component: {fileID: 2025030469}
-  - component: {fileID: 2025030468}
+  - component: {fileID: 6036436198801991106}
   m_Layer: 3
   m_Name: "\u041A\u0443\u0431"
   m_TagString: Untagged
@@ -2775,6 +2763,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1724865709}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6036436198801991106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3452737556930436653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238f358f13bf4764caf3d723dbba25ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyId: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
