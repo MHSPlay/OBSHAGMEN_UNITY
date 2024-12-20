@@ -39,8 +39,8 @@ public class GameMenu : MonoBehaviour {
     private void Start( ) {
 
         mouseSensitivity = ( float )Config.instance.GetSettings( "fMouseSensitivity" );
-        currentMasterVolume = ( float )Config.instance.GetSettings( "iMasterVolume" );
-        currentMusicVolume = ( float )Config.instance.GetSettings( "iMusicVolume" );
+        currentMasterVolume = ( float )Config.instance.GetSettings( "MasterVolume" );
+        currentMusicVolume = ( float )Config.instance.GetSettings( "MusicVolume" );
 
         UpdateSensitivityText( );
 
@@ -53,13 +53,15 @@ public class GameMenu : MonoBehaviour {
         if ( MasterVolumeSlider != null )
         {
             MasterVolumeSlider.value = currentMasterVolume;
-            MasterVolumeSlider.onValueChanged.AddListener( volume => OnVolumeChanged( "iMasterVolume", "Master", volume, MasterVolumeText ) );
+            MasterVolumeText.text = "MasterVolume: 1";
+            MasterVolumeSlider.onValueChanged.AddListener( volume => OnVolumeChanged( "MasterVolume", "Master", volume, MasterVolumeText ) );
         }
 
         if ( MusicVolumeSlider != null )
         {
             MusicVolumeSlider.value = currentMusicVolume;
-            MusicVolumeSlider.onValueChanged.AddListener( volume => OnVolumeChanged( "iMusicVolume", "Music", volume, MusicVolumeText ) );
+            MusicVolumeText.text = "MusicVolume: 1";
+            MusicVolumeSlider.onValueChanged.AddListener( volume => OnVolumeChanged( "MusicVolume", "Music", volume, MusicVolumeText ) );
         }
 
         // reset by default

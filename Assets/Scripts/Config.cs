@@ -72,8 +72,8 @@ public class GameSettings
     public int iResolutionHeight = 1080;
     public bool bIsFullscreen = true;
 
-    public float iMasterVolume = 100;
-    public float iMusicVolume = 100;
+    public float MasterVolume = 100;
+    public float MusicVolume = 100;
 
     public float fMouseSensitivity = 1.0f;
 
